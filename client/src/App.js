@@ -1,14 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LoginPage from './components/LoginPage/LoginPage';
-import LoginPageAdmin from './components/LoginPageAdmin/LoginPageAdmin';
+import StartPage from './components/StartPage/StartPage';
 
 function App() {
   return (
     <div className="App">
-      <LoginPage />
-      <LoginPageAdmin />
+      <StartPage />
     </div>
   );
 }
