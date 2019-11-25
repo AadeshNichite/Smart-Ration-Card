@@ -1,0 +1,42 @@
+:root{
+    --primary-color:#ECEFF1;
+    --secondary-color: #78909C; 
+    --third-color: #37474F;
+ }
+.MainDiv
+{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.button
+{
+    background-color: var(--secondary-color) ;
+    padding: 5px;
+    color: var(--primary-color);
+    border-radius: 5px;
+    font-size: 15px;
+    width: 100px;
+    height: 35px;
+    margin: 20px;
+    outline: none;
+    border : 1px solid var(--secondary-color);
+}
+.data
+{
+    border : 1px solid var(--secondary-color);
+    padding: 5px;
+    border-radius: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    outline: none;
+    font-size: medium;
+}
+.head
+{
+    color: var(--third-color);
+    font-size: x-large;
+}

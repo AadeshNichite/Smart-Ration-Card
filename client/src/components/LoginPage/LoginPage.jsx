@@ -3,7 +3,6 @@ import './LoginPage.css';
 
 class LoginPage extends Component{
 
-
     render(){
         return <div className="MainDiv">
         <h1 className="head text-center">Smart-Ration Card</h1>
