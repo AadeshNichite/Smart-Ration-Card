@@ -26,6 +26,7 @@ class LoginPage extends Component{
         const{username,password} = this.state
         //Login Logic
         if(username ==="A" && password == "B"){
+            localStorage.setItem("token","username");
             this.setState({
                 loggedIn: true
             })
