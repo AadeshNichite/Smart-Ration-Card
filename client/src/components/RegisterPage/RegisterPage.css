@@ -1,9 +1,10 @@
+/* Author:- Aadesh Nichite */
+
 :root{
     --primary-color:#ECEFF1;
     --secondary-color: #78909C; 
     --third-color: #37474F;
  }
- 
 .MainDiv
 {
     height: 100vh;
@@ -21,7 +22,7 @@
     font-size: 15px;
     width: 100px;
     height: 35px;
-    margin: 20px;
+    margin: 5px;
     outline: none;
     border : 1px solid var(--secondary-color);
 }
@@ -35,6 +36,7 @@
     text-align: center;
     outline: none;
     font-size: medium;
+    margin: 10px;
 }
 .head
 {
