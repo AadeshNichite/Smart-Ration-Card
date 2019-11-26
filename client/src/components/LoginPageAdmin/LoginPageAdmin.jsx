@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import './LoginPageAdmin.css';
+// import React, {Component} from 'react';
+// import './LoginPageAdmin.css';
 
-class LoginPageAdmin extends Component{
-    render(){
-        return <div className="MainDiv">
-        <h1 className="head text-center">Smart-Ration Card</h1>
-        <input type="text" className="data" id="data" placeholder="Enter Employee Number" />
-        {/* <button type="submit" className="button" onClick={()=> this.show()}>submit</button> */}
-        <button type="submit" className="button">submit</button>
-        </div>
-    }
-}
+// class LoginPageAdmin extends Component{
+//     render(){
+//         return <div className="MainDiv">
+//         <h1 className="head text-center">Smart-Ration Card</h1>
+//         <input type="text" className="data" id="data" placeholder="Enter Employee Number" />
+//         {/* <button type="submit" className="button" onClick={()=> this.show()}>submit</button> */}
+//         <button type="submit" className="button">submit</button>
+//         </div>
+//     }
+// }
 
-export default LoginPageAdmin;
+// export default LoginPageAdmin;

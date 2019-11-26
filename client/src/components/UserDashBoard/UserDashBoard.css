@@ -4,39 +4,16 @@
     --third-color: #37474F;
  }
  
-.MainDiv
+.MainDivMainDivUserDashBoard
 {
-    height: 100vh;
+    height: 80vh;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
-.button
-{
-    background-color: var(--secondary-color) ;
-    padding: 5px;
-    color: var(--primary-color);
-    border-radius: 5px;
-    font-size: 15px;
-    width: 100px;
-    height: 35px;
-    margin: 20px;
-    outline: none;
-    border : 1px solid var(--secondary-color);
-}
-.data
-{
-    border : 1px solid var(--secondary-color);
-    padding: 5px;
-    border-radius: 10px;
-    width: 300px;
-    height: 30px;
-    text-align: center;
-    outline: none;
-    font-size: medium;
-}
-.head
+.headMainDivUserDashBoard
 {
     color: var(--third-color);
     font-size: x-large;

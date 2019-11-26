@@ -5,7 +5,7 @@
     --secondary-color: #78909C; 
     --third-color: #37474F;
  }
-.MainDiv
+.MainDivRegister
 {
     height: 100vh;
     justify-content: center;
@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
 }
-.button
+.buttonRegister
 {
     background-color: var(--secondary-color) ;
     padding: 5px;
@@ -26,7 +26,7 @@
     outline: none;
     border : 1px solid var(--secondary-color);
 }
-.data
+.dataRegister
 {
     border : 1px solid var(--secondary-color);
     padding: 5px;
@@ -38,7 +38,7 @@
     font-size: medium;
     margin: 10px;
 }
-.head
+.headRegister
 {
     color: var(--third-color);
     font-size: x-large;

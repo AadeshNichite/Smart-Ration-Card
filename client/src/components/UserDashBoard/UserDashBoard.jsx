@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component,Fragment} from 'react';
 import './UserDashBoard.css';
 import { Redirect } from 'react-router-dom';
-// import  Logout  from '../Logout/Logout';
+import  Logout  from '../Logout/Logout';
 
 class UserDashBoard extends Component{
     constructor(props){
@@ -21,9 +21,12 @@ class UserDashBoard extends Component{
         {
             return <Redirect to="/" />
         }
-        return <div className="MainDiv">
-        <h1 className="head text-center">Smart-Ration Card</h1>
-        </div>
+        return <Fragment>
+        <Logout/>
+            <div className="MainDivUserDashBoard">
+            <h1 className="headMainDivUserDashBoard text-center">Smart-Ration Card</h1>
+            </div>
+        </Fragment>
     }
 }
 
