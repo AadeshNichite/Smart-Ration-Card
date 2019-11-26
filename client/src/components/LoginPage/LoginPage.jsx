@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './LoginPage.css';
 import { Link, Switch , Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class LoginPage extends Component{
     constructor(props)
@@ -21,17 +22,25 @@ class LoginPage extends Component{
     }
 
     submitForm(e){
-        e.preventDefault()
+        e.preventDefault();
         const{username,password} = this.state
-
         //Login Logic
-
+        if(username ==="A" && password == "B"){
+            this.setState({
+                loggedIn: true
+            })
+        }
     }
 
     render(){
+
+    if(this.state.loggedIn)
+    {
+        return <Redirect to="/UserDashBoard" />
+    }    
         return (
-        <div className="MainDiv">
-            <form onSubmit={this.submitForm}>
+        <div>
+            <form onSubmit={this.submitForm} className="MainDiv">
                 <h1 className="head text-center">Smart-Ration Card</h1>
                 <input type="text" className="data" id="data" name="username" placeholder="Enter Ration Card Number" value={this.state.username} onChange={this.onChange} />
                 <input type="password" className="data" id="data" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
