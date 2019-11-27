@@ -1,18 +1,22 @@
 const express =require('express');
-const uri = "mongodb+srv://Aadesh:nMM8ilJlC0TJvz6O@cluster0-qvy1m.mongodb.net/test?retryWrites=true&w=majority";
+const connectDB = require('./config/db')
+
 const app = express();
-const port = process.env.PORT || 8800;
-const mongoose = require('mongoose');
-const cors=require('cors');
-const bodyparser=require('body-parser');
-app.use(cors());
-app.use(bodyparser.urlencoded({extended:false}));
-app.use(bodyparser.json());// mongoose connection estblished
-mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true})
-                    .then(() => console.log('Connected to MongoDB Successfully......'))
-                    .catch(err => console.log('Error occured while connecting MongoDB '+err));
-console.log("connect");// set path for router file
-// app.use('/', require('./route'));// listening port
-app.listen(port, () => {
-console.log("Port 8800 running on browser...");
-});
+
+//Connect Database
+connectDB();
+
+app.get('/', (req,res)=>res.send('API is Running'));
+//Define Routes
+
+app.use('./routes/api/users ', require('./routes/api/users'));
+app.use('./routes/api/auth', require('./routes/api/auth'));
+app.use('./routes/api/profile', require('./routes/api/profile'));
+app.use('./routes/api/post', require('./routes/api/post'));
+
+const PORT = process.env.PORT || 8800;
+
+app.listen(PORT, () => {console.log(`Port ${PORT} running on browser...`)});
+
+
+  
