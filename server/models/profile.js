@@ -7,7 +7,7 @@ const ProfileSchema = new mongoose.Schema({
     },
     rationhistory: {
         Month: {
-            type : Date,
+            type : String,
             required : true
         },
         history:{
