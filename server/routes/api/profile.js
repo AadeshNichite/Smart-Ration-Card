@@ -24,7 +24,6 @@ router.get('/', auth , async (req,res) => {
         res.status(500).send("server error");
     }
 
-
 });
 
 //@route    POST api/profile
@@ -44,9 +43,10 @@ router.post(
     async (req,res)=>{
         const errors = validationResult(req);
         if(!errors.isEmpty()){
-            return res.status(400).json({errors:errors.array()})
+            return res.status(400).json({errors:errors.array() })
         }
         const {
+            user,
             Month,
             item,
             ammount,
@@ -67,11 +67,13 @@ router.post(
         if(ammount) profileFields.rationhistory.history.ammount= ammount;
         if(price) profileFields.rationhistory.history.price= price;
 
-        try{
-            let profile = await Profile.findOne({ user : req.user.id });
-            if(profile){
-                
+        // console.log(Month,item,ammount,price,req.user.id );
 
+         try{
+            let profile = await Profile.findOne({ user : req.user.id });
+
+            if(profile){
+    
                 //update
                 profile = await Profile.findOneAndUpdate(
                     { user: req.user.id },
@@ -81,21 +83,17 @@ router.post(
 
                 return res.json(profile);
             }
-            else{
-            console.log(Month,item,ammount,price,req.user.id );
+           
+            // console.log(Month,item,ammount,price,req.user.id );
             //Create
             profile = new Profile(profileFields);
-            await profile.save();
-            res.json(profile);
-            }
+            await Profile.save();
+            return res.json(profile);
 
         }catch(err){
             console.error(err.message);
             res.status(500).send('Server Error');
         }
-
-
-        res.send("Hello");
 
     });
 module.exports = router;
