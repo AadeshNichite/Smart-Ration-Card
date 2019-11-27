@@ -13,7 +13,7 @@ module.exports = function(req,res,next){
 
     //verify token 
     try{
-        const decoded = jwt.verify(token,congig.get('jwtsecret'))
+        const decoded = jwt.verify(token,config.get('jwtsecret'))
         req.user = decoded.user;
         next();
     } catch(err) {
