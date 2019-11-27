@@ -56,9 +56,6 @@ router.post(
         //Build profile object
         const profileFields = {};
         profileFields.user = req.user.id;
-        
-         
-         
 
         //Build A rationistory Object
         profileFields.rationhistory={}
