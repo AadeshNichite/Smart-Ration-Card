@@ -5,6 +5,6 @@ const router = express.Router();
 //@desc     Add profile
 //@access   Public
 
-router.get('/',(req,res) => res.send('User Route'))
+router.get('/',(req,res) => res.send('User Route'));
 
 module.exports = router;
