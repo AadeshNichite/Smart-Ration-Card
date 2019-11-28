@@ -87,7 +87,7 @@ router.post(
             // console.log(Month,item,ammount,price,req.user.id );
             //Create
             profile = new Profile(profileFields);
-            await Profile.save();
+            await profile.save();
             return res.json(profile);
 
         }catch(err){
