@@ -168,12 +168,12 @@ async (req,res) => {
     let arr =[];
 
     try{
-        const profile = await Profile.findOne({ user : req.user.id });
-        // console.log(profile.rationhistory);
-        // console.log(newRationInfo);
-        profile.rationhistory.unshift(newRationInfo);
-        // arr.unshift(profile.rationhistory)
-        // arr.unshift(newRationInfo)
+
+        const profile = await Profile.findOneAndUpdate(
+            { user: req.user.id },
+            { $push : { rationhistory : newRationInfo } }
+        )
+
         await profile.save();
 
         res.json(profile); 
