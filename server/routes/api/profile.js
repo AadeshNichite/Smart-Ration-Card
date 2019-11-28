@@ -6,7 +6,7 @@ const User = require('../../models/user');
 const {check ,validationResult } = require('express-validator');
 
 //@route    GET api/profile
-//@desc     Get Current User profile
+//@desc     Get Current User profile using token 
 //@access   Private
 
 router.get('/', auth , async (req,res) => {
@@ -96,4 +96,38 @@ router.post(
         }
 
     });
+
+
+//@route    GET api/profile/profile/:user_id
+//@desc     Get  profile by user_id 
+//@access   Public
+router.get('/profile/:user_id',async (req,res) =>{
+    try{
+        const profile = await Profile.findOne({ user : req.params.user_id}).populate('User',
+        ['rationhistory','name']);
+        res.json(profile);
+
+        if(!profile)
+        return res.status(400).json({msg : 'Profile Not found'});
+
+    }catch(err){
+        console.error(err.message); 
+        if(err.kind=='ObjectId'){
+            return res.status(400).json({msg : 'Profile Not found'});
+        }
+        res.status(500).send('Server Error');
+    }
+});
+
+//@route    PUT api/profile/rationInfo
+//@desc     Add Ration Info month by Month 
+//@access   Private
+router.put('/profile/rationInfo',[auth [
+    
+
+] ],async (req,res) =>{
+
+});
+
+
 module.exports = router;
