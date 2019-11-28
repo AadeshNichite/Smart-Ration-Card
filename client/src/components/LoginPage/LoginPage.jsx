@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './LoginPage.css';
 import { Link, Switch , Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 class LoginPage extends Component{
     constructor(props)
@@ -9,7 +10,7 @@ class LoginPage extends Component{
         super(props);
         let loggedIn = false;
         this.state ={
-            username: '',
+            rationCardNo: '',
             password: ''
         }
         this.onChange=this.onChange.bind(this);
@@ -23,14 +24,22 @@ class LoginPage extends Component{
 
     submitForm(e){
         e.preventDefault();
-        const{username,password} = this.state
+        const user = {
+            rationCardNo: this.state.rationCardNo,
+            password: this.state.password
+          };
         //Login Logic
-        if(username ==="A" && password == "B"){
-            localStorage.setItem("token","username");
-            this.setState({
-                loggedIn: true
-            })
-        }
+        // if(username ==="A" && password == "B"){
+        //     localStorage.setItem("token","username");
+        //     this.setState({
+        //         loggedIn: true
+        //     })
+        // }
+        axios.post(`http://localhost:8000/api/auth`, { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
     }
 
     render(){
