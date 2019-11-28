@@ -5,7 +5,7 @@ const ProfileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    rationhistory: {
+    rationhistory: [{
         Month: {
             type : String,
             required : true
@@ -25,7 +25,7 @@ const ProfileSchema = new mongoose.Schema({
             }
         }
 
-    }    
+    }]    
 
 })
 
