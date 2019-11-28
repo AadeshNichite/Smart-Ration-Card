@@ -122,10 +122,63 @@ router.get('/profile/:user_id',async (req,res) =>{
 //@route    PUT api/profile/rationInfo
 //@desc     Add Ration Info month by Month 
 //@access   Private
-router.put('/profile/rationInfo',[auth [
-    
+router.put(
+    '/profile/rationInfo',
+    [
+        auth, 
+        [
+            check('Month' ,'Month is required')
+            .not()
+            .isEmpty(),
+            check('item' ,'item is required')
+            .not()
+            .isEmpty(),
+            check('ammount' ,'ammount is required')
+            .not()
+            .isEmpty(),
+            check('price' ,'price is required')
+            .not()
+            .isEmpty()
 
-] ],async (req,res) =>{
+        ] 
+    ],
+async (req,res) =>{
+
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array() })
+    }
+
+    const [
+        Month,
+        item,
+        ammount,
+        price
+    ] = req.body;
+
+    const newRationInfo ={};
+    if(Month) newRationInfo.Month = Month;
+
+    newRationInfo.history={};
+    if(item) newRationInfo.history.item = item;
+    if(ammount) newRationInfo.history.ammount= ammount;
+    if(price) newRationInfo.history.price= price;
+
+    try{
+        const profile = await Profile.findOne({ user : req.user_id});
+
+        profile.rationhistory.unshift(newRationInfo);
+
+        await profile.save();
+
+        res.json(profile);
+
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+
 
 });
 
