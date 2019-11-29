@@ -23,23 +23,28 @@ class LoginPage extends Component{
         })
     }
 
-    submitForm(e){
+      submitForm(e){
         e.preventDefault();
-        const { rationCardNo,password } = this.state;
-        console.log(rationCardNo);
-        console.log(password);
+        const rationCardNo = this.state.rationCardNo;
+        const password = this.state.password;
+        const user = {rationCardNo,password}
+
+        const config = {
+            headers : {
+                'Content-type' : 'application/json'
+                }
+            }
+
+        const body =  JSON.stringify(user);
+
+        const res = axios.post('api/auth',body,config);
+
+        console.log(res.data);
         // Login Logic
-        axios
-        .post("http://localhost:8000/api/auth", { rationCardNo, password })
-        .then(response => {
-            // console.log(response)
-            this.setState({
-            loggedIn: true
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        // axios.post()
+        // .catch(err => {
+        //     console.log(err);
+        // });
     }
 
     render(){
@@ -52,7 +57,7 @@ class LoginPage extends Component{
         <div>
             <form onSubmit={this.submitForm} className="MainDiv">
                 <h1 className="head text-center">Smart-Ration Card</h1>
-                <input type="text" className="data" id="data" name="username" placeholder="Enter Ration Card Number" value={this.state.username} onChange={this.onChange} />
+                <input type="text" className="data" id="data" name="rationCardNo" placeholder="Enter Ration Card Number" value={this.state.rationCardNo} onChange={this.onChange} />
                 <input type="password" className="data" id="data" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
                 <button type="submit" className="button">submit</button>
                 <Link to='/register'><button type="submit" className="button">Register</button></Link>
