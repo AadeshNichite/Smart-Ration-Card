@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './LoginPage.css';
 import { Link, Switch , Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+// import { axios } from 'axios';
+import axios from "axios";
 
 class LoginPage extends Component{
     constructor(props)
@@ -24,22 +25,21 @@ class LoginPage extends Component{
 
     submitForm(e){
         e.preventDefault();
-        const user = {
-            rationCardNo: this.state.rationCardNo,
-            password: this.state.password
-          };
-        //Login Logic
-        // if(username ==="A" && password == "B"){
-        //     localStorage.setItem("token","username");
-        //     this.setState({
-        //         loggedIn: true
-        //     })
-        // }
-        axios.post(`http://localhost:8000/api/auth`, { user })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
+        const { rationCardNo,password } = this.state;
+        console.log(rationCardNo);
+        console.log(password);
+        // Login Logic
+        axios
+        .post("http://localhost:8000/api/auth", { rationCardNo, password })
+        .then(response => {
+            // console.log(response)
+            this.setState({
+            loggedIn: true
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     render(){
@@ -61,4 +61,45 @@ class LoginPage extends Component{
      )
     }
 }
+
+// class LoginPage extends React.Component {
+//     constructor(props)
+//     {
+//         state = {
+//             name: '',
+//         }
+//     }
+
+//   handleChange = event => {
+//     this.setState({ name: event.target.value });
+//   }
+
+//   handleSubmit = event => {
+//     event.preventDefault();
+
+//     const user = {
+//       name: this.state.name
+//     };
+
+//     axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+//       .then(res => {
+//         console.log(res);
+//         console.log(res.data);
+//       })
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//         <form onSubmit={this.handleSubmit}>
+//           <label>
+//             Person Name:
+//             <input type="text" name="name" onChange={this.handleChange} />
+//           </label>
+//           <button type="submit">Add</button>
+//         </form>
+//       </div>
+//     )
+//   }
+// }
 export default LoginPage;
