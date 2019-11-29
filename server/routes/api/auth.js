@@ -52,7 +52,7 @@ router.post(
     }
 
     const isMatch = await bcrypt.compare(password,user.password);
-
+    console.log("here")
     if(!isMatch)
     {
         return res
