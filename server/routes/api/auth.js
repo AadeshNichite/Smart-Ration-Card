@@ -40,7 +40,7 @@ router.post(
     }    
 
     const{rationCardNo, password}=req.body;
-
+    console.log(rationCardNo,password);
     try{
 
     //see if user exists
