@@ -10,7 +10,6 @@ export default class Logout extends Component {
     return (
         <div>
             <navbar className="navbar navbar-dark bg-dark">
-                <a className="navbar-brand" href="#"></a>
                 <Link to="/"><button type="submit" className="button">submit</button></Link>
             </navbar>
         </div>

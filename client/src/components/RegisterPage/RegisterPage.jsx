@@ -1,8 +1,13 @@
 import React from 'react';
 import './RegisterPage.css';
-import { Link, Switch , Route } from 'react-router-dom';
+// import { Link, Switch , Route } from 'react-router-dom';
 
 export const RegisterPage = () => {
+    
+
+
+
+
     return (
         <div>
             <div className="MainDivRegister">

@@ -40,7 +40,6 @@ router.post(
     }    
 
     const{rationCardNo, password}=req.body;
-    console.log(rationCardNo,password);
     try{
 
     //see if user exists
@@ -74,6 +73,7 @@ router.post(
             (err,token) =>{
                 if(err) throw  err;
                 res.json({token})
+                console.log(token)
             } 
         )
 

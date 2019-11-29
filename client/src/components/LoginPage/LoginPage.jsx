@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './LoginPage.css';
-import { Link, Switch , Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-// import { axios } from 'axios';
+import { Link,Redirect} from 'react-router-dom';
 import axios from "axios";
 
 class LoginPage extends Component{
@@ -37,28 +35,30 @@ class LoginPage extends Component{
 
         const body =  JSON.stringify(user);
 
-        const res = axios.post('api/auth',body,config);
+        axios.post('api/auth',body,config)
+                         .then(res => {
+                             localStorage.setItem("token",res.data.token);
+                             if(res.data.token){
+                                this.setState({
+                                    loggedIn : true
+                                });
+                         }  
 
-        console.log(res.data);
-        // Login Logic
-        // axios.post()
-        // .catch(err => {
-        //     console.log(err);
-        // });
-    }
+                    });
+                }
 
     render(){
 
     if(this.state.loggedIn)
     {
         return <Redirect to="/UserDashBoard" />
-    }    
+    }   
         return (
         <div>
             <form onSubmit={this.submitForm} className="MainDiv">
                 <h1 className="head text-center">Smart-Ration Card</h1>
                 <input type="text" className="data" id="data" name="rationCardNo" placeholder="Enter Ration Card Number" value={this.state.rationCardNo} onChange={this.onChange} />
-                <input type="password" className="data" id="data" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
+                <input type="password" className="data" id="dataPassword" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
                 <button type="submit" className="button">submit</button>
                 <Link to='/register'><button type="submit" className="button">Register</button></Link>
             </form>
@@ -66,45 +66,4 @@ class LoginPage extends Component{
      )
     }
 }
-
-// class LoginPage extends React.Component {
-//     constructor(props)
-//     {
-//         state = {
-//             name: '',
-//         }
-//     }
-
-//   handleChange = event => {
-//     this.setState({ name: event.target.value });
-//   }
-
-//   handleSubmit = event => {
-//     event.preventDefault();
-
-//     const user = {
-//       name: this.state.name
-//     };
-
-//     axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
-//       .then(res => {
-//         console.log(res);
-//         console.log(res.data);
-//       })
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <form onSubmit={this.handleSubmit}>
-//           <label>
-//             Person Name:
-//             <input type="text" name="name" onChange={this.handleChange} />
-//           </label>
-//           <button type="submit">Add</button>
-//         </form>
-//       </div>
-//     )
-//   }
-// }
 export default LoginPage;
