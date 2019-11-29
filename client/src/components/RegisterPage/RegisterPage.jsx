@@ -49,7 +49,7 @@ class RegisterPage extends Component {
          const body =  JSON.stringify(user);
          console.log(body)
 
-        axios.post('http://localhost:8000/api/users',body,config)
+        axios.post('/api/users',body,config)
                          .then(res => {
                              localStorage.setItem("token",res.data.token);
                              if(res.data.token){
