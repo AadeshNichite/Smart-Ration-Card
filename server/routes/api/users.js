@@ -43,6 +43,7 @@ router.post(
         password
     })
 
+    console.log("here")
     //Encrypt password
 
     const salt = await bcrypt.genSalt(10);
