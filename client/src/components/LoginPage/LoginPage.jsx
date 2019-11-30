@@ -37,13 +37,13 @@ class LoginPage extends Component{
         console.log(body)
         axios.post('/api/auth',body,config)
                          .then(res => {
-                             localStorage.setItem("token",res.data.token);
                              if(res.data.token){
                                 this.setState({
                                     loggedIn : true
                                 });
+                                localStorage.setItem("token",res.data.token);
                          }  
-
+                         
                     });
                 }
 
@@ -60,7 +60,7 @@ class LoginPage extends Component{
                 <input type="text" className="data" id="data" name="rationCardNo" placeholder="Enter Ration Card Number" value={this.state.rationCardNo} onChange={this.onChange} />
                 <input type="password" className="data" id="dataPassword" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
                 <button type="submit" className="button">submit</button>
-                <Link to='/register'><button type="submit" className="button">Register</button></Link>
+                <Link to='/register' className="register">Create Account</Link>
             </form>
         </div>
      )
