@@ -7,7 +7,7 @@ class UserDashBoard extends Component{
     constructor(props){
         super(props)
         const token = localStorage.getItem("token");
-
+        this.state = [];
         let loggedIn = true;
         if(token == null){
             loggedIn = false;
@@ -25,6 +25,7 @@ class UserDashBoard extends Component{
         <Logout/>
             <div className="MainDivUserDashBoard">
             <h1 className="headMainDivUserDashBoard text-center">Smart-Ration Card</h1>
+
             </div>
         </Fragment>
     }

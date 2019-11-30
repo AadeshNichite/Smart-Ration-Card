@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import './Logout.css';
 import { Link } from 'react-router-dom';
 
 export default class Logout extends Component {
@@ -10,7 +11,7 @@ export default class Logout extends Component {
     return (
         <div>
             <navbar className="navbar navbar-dark bg-dark">
-                <Link to="/"><button type="submit" className="button">submit</button></Link>
+                <Link to="/"><button type="submit" className="btn">Logout</button></Link>
             </navbar>
         </div>
     )

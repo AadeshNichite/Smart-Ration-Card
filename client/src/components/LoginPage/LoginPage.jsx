@@ -34,7 +34,7 @@ class LoginPage extends Component{
             }
 
         const body =  JSON.stringify(user);
-
+        console.log(body)
         axios.post('/api/auth',body,config)
                          .then(res => {
                              localStorage.setItem("token",res.data.token);

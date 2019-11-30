@@ -12,11 +12,11 @@ const User = require('../../models/user')
 router.post(
     '/', 
     [
-    check('name', 'Name is required').not().isEmpty(),
     check('rationCardNo','Please Enter a valid ration card number').not().isEmpty(),
-    check('password','Please enter a password with min length 6 character').isLength({min: 6}),
+    check('name', 'Name is required').not().isEmpty(),
     check('noOfPeople','Please Enter a valid number').not().isEmpty(),
-    check('address','Please Enter a valid address').not().isEmpty()
+    check('address','Please Enter a valid address').not().isEmpty(),
+    check('password','Please enter a password with min length 6 character').isLength({min: 6})
     ],
     async(req, res) => {
     const errors = validationResult(req);

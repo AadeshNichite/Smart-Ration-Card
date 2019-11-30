@@ -20,8 +20,10 @@ class RegisterPage extends Component {
         this.submitForm=this.submitForm.bind(this);
     }
     onChange(e){
+        const {name,value} = e.target
         this.setState({
-            [e.target.name]: e.target.value
+            [name]: value
+
         })
     }
 
@@ -47,14 +49,12 @@ class RegisterPage extends Component {
             }
 
          const body =  JSON.stringify(user);
-         console.log(body)
-
         axios.post('/api/users',body,config)
                          .then(res => {
                              localStorage.setItem("token",res.data.token);
                              if(res.data.token){
                                 this.setState({
-                                    loggedIn : true
+                                   loggedIn : true
                             });
                     }  
 
@@ -69,12 +69,12 @@ class RegisterPage extends Component {
         <div>
             <form onSubmit={this.submitForm} className="MainDiv">
                 <h1 className="headRegister text-center">Smart-Ration Card</h1>
-                <input type="text" className="dataRegister" id="rationCardNo" placeholder="Enter Ration Card Number" />
-                <input type="text" className="dataRegister" id="name" placeholder="Enter Name" />
-                <input type="text" className="dataRegister" id="noOfPeople" placeholder="Enter Number of People" />
-                <input type="text" className="dataRegister" id="address" placeholder="Address" />
-                <input type="password" className="dataRegister" id="password" placeholder="Password" />
-                <input type="password" className="dataRegister" id="reEnteredPassword" placeholder="Re Enter Password" />
+                <input type="text" className="dataRegister" id="rationCardNo" name="rationCardNo" placeholder="Enter Ration Card Number" value={this.state.rationCardNo} onChange={this.onChange} />
+                <input type="text" className="dataRegister" id="name" name="name" placeholder="Enter Name" value={this.state.name} onChange={this.onChange} />
+                <input type="text" className="dataRegister" id="noOfPeople" name="noOfPeople" placeholder="Enter Number of People" value={this.state.noOfPeople} onChange={this.onChange} />
+                <input type="text" className="dataRegister" id="address" name="address" placeholder="Address" value={this.state.address} onChange={this.onChange} />
+                <input type="password" className="dataRegister" id="password" name="password" placeholder="Password" value={this.state.password} onChange={this.onChange} />
+                <input type="password" className="dataRegister" id="reEnteredPassword" name="reEnteredPassword" placeholder="Re Enter Password" value={this.state.reEnteredPassword} onChange={this.onChange} />
                 <button type="submit" className="buttonRegister">submit</button> 
             </form>
         </div>
