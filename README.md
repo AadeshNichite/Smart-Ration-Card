@@ -24,7 +24,12 @@ Create a Smart-Ration-Card App.
 Smart-Ration-Card is the app which help ration holder to know how much ammount of ration they will get at present month.
 
 ## Demo 
-Username: 
-Password: 
+ Username: MH2100
+ Password: ABCDEFG
+
+## Design
+
+![Drag Racing](./client/src/images/Untitled.png)
+
 
 ## Visit:
