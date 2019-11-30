@@ -1,5 +1,26 @@
-.btn{
+nav{
+    height: 80px;
+    width: 100%;
+    background-color: #607D8B;
+    line-height: 80px;
+}
+nav ul{
     float: right;
-    margin-right: 10;
-    margin-right: 20px;
+    margin-right: 50px;
+
+}
+nav ul li{
+    color: white;
+    list-style: none;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#log-out-button{
+    color: white;
+    cursor: pointer;
+}
+#signout{
+    text-decoration: none;
+    color: white;
 }
