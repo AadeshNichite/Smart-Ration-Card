@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './Logout.css';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Logout extends Component {
     constructor(props){
@@ -9,11 +10,11 @@ export default class Logout extends Component {
     }
     render(){
     return (
-        <div>
-            <navbar className="navbar navbar-dark bg-dark">
-                <Link to="/"><button type="submit" className="btn">Logout</button></Link>
-            </navbar>
-        </div>
+        <nav>
+          <ul>
+            <li id="log-out-button"><Link to="/" id="signout">Log Out</Link></li>          
+          </ul>
+        </nav>
     )
     }
 }
