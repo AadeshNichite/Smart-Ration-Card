@@ -27,4 +27,9 @@ Smart-Ration-Card is the app which help ration holder to know how much ammount o
 Username: 
 Password: 
 
+## Design
+
+![Drag Racing](./client/src/images/Untitled.png)
+
+
 ## Visit:
